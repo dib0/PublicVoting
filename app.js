@@ -33,6 +33,8 @@ app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
+  logging.info("404 not found" + req);
+  
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
@@ -44,6 +46,8 @@ app.use(function(req, res, next) {
 // will print stacktrace
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
+  logging.debug("Generic error handling: " + err.message);
+
     res.status(err.status || 500);
     res.render('error', {
       message: err.message,
@@ -55,6 +59,8 @@ if (app.get('env') === 'development') {
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
+  logging.error("500 internal error" + err.message);
+  
   res.status(err.status || 500);
   res.render('error', {
     message: err.message,
