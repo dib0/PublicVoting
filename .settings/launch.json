@@ -5,11 +5,11 @@
 	"configurations": [
 		{
 			// Name of configuration; appears in the launch configuration drop down menu.
-			"name": "Launch server.js",
+			"name": "Launch app.js",
 			// Type of configuration. Possible values: "node", "mono".
 			"type": "node",
 			// Workspace relative or absolute path to the program.
-			"program": "./server.js",
+			"program": "./bin/www",
 			// Automatically stop program after launch.
 			"stopOnEntry": true,
 			// Command line arguments passed to the program.
@@ -27,7 +27,7 @@
 			// TCP/IP address. Default is "localhost".
 			"address": "localhost",
 			// Port to attach to.
-			"port": 5858
+			"port": 3000
 		}
 	]
 }
