@@ -2,18 +2,28 @@ var config = require('../config.js');
 var express = require('express');
 var router = express.Router();
 
-// Add Bitcore internals
-var PaymentProtocol = require('bitcore-payment-protocol');
-var bitcore = require('bitcore');
+// Add Ethereum internals
 var now = Date.now() / 1000 | 0;
+var async = require('async'),
+    Ethereum = require('ethereumjs-lib'),
+    VM = Ethereum.VM,
+    Account = Ethereum.Account,
+    Transaction = Ethereum.Transaction,
+    Trie = Ethereum.Trie,
+    rlp = Ethereum.rlp;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Public voting' });
 });
 
-// Bitcoin services
+// Ethereum services
 router.get('/api/createpayment', function(req, res, next) {
+  res.json("OK");
+});
+
+// Bitcoin services
+/*router.get('/api/createpayment', function(req, res, next) {
   // construct the payment details
   var details = new PaymentProtocol().makePaymentDetails();
   if (config.production)
@@ -47,6 +57,6 @@ router.get('/api/createpayment', function(req, res, next) {
   //var rawbody = request.serialize();
 
   res.json("OK");
-});
+});*/
 
 module.exports = router;
